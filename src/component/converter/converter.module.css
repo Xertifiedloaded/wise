@@ -1,0 +1,102 @@
+.converterMenu {
+    background-color: var(--limeColor);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: centergit add ;
+    padding: 0 50px;
+}
+
+.converterMenu .content {
+    width: 50%;
+}
+
+.converterMenu .converter {
+    width: 45%;
+    box-sizing: border-box;
+    padding: 40px;
+    border-radius: 10px;
+    background-color: rgb(255 255 255);
+    ;
+}
+
+.converter .input {
+    border: 1px solid;
+    border-radius: 7px;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+
+}
+
+.converter .input input {
+    width: 90%;
+    height: 40px;
+    outline: none;
+    border: none;
+    padding: 0 7px;
+}
+
+.flex,
+.rate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rate {
+    margin-bottom: 20px;
+}
+
+.submit {
+    margin-top: 30px;
+}
+
+.submit>button {
+    width: 100%;
+    height: 50px;
+}
+.content h2{
+    font-size:3.2rem;
+    text-align: center;
+}
+.content p{
+    font-size: 12px;
+    text-align: center;
+}
+@media screen and (max-width:600px) {
+    .converterMenu {
+        display: block;
+        padding: 0;
+        padding: 40px 0;
+    
+    }
+
+    .converterMenu .content,
+    .converterMenu .converter {
+        width: 100%;
+    }
+
+    .content h2,
+    .content p {
+        padding: 5px 0;
+
+    }
+
+    .content h2 {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .content p {
+        font-size: 12px;
+        text-align: center;
+        padding: 10px 3px;
+    }
+
+    .converterMenu .converter {
+        padding: 10px;
+        border-radius: 0;
+    }
+}
