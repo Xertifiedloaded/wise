@@ -1,0 +1,116 @@
+.main {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: relative;
+    margin-top: 100px;
+}
+
+.main .text {
+    width: 50%;
+}
+
+.main .text>h1 {
+    font-size: 4.5rem;
+    font-weight: 900;
+    overflow: hidden;
+    text-transform: capitalize;
+}
+
+.cards {
+    min-width: 400px;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #a0e1e1;
+}
+
+.cards .imgCont {
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+}
+
+.cards .imgCont>img {
+    width: 100%;
+    height: auto;
+}
+
+.cards .quote {
+    margin: 50px 0 150px 0;
+}
+
+.cards .quote>p {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.cardBtn2 {
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: 1px solid var(--limeColor);
+    font-weight: 500;
+    background: var(--color-lime2);
+}
+
+.card {
+    display: flex;
+    gap: 10px;
+    width: 50%;
+    overflow: hidden;
+    scroll-behavior: smooth;
+}
+
+.control {
+    display: flex;
+    gap: 35px;
+
+}
+
+.left,
+.right {
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    background: rgb(64 64 64);
+}
+
+.left>img,
+.right>img {
+    filter: invert(1);
+    width: 50%;
+}
+
+@media screen and (max-width:600px) {
+    .main {
+        display: block;
+    }
+
+    .main .text {
+        width: 100%;
+    }
+
+    .cards,
+    .card {
+        width: 100%;
+    }
+    .cards:hover .control{
+    background-color: red;
+     
+        
+    }
+    .main .text>h1 {
+        font-size: 25px;
+        padding: 0 0 20px 0;
+    }
+    .control{
+        display: none;
+        position: absolute;
+        bottom: 18%;
+        left: 30%;
+        
+    }
+}

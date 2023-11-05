@@ -3,8 +3,10 @@ import classes from "./converter.module.css";
 import error from "../../assets/images/error.svg";
 import { useState } from "react";
 import axios from "axios";
+import { SetCountry } from "../../constant/country";
 const Converter = () => {
-  const BASE_URL = " https://v6.exchangerate-api.com/v6/de16fecd1215e6062d2dd99b/latest/USD";
+  const BASE_URL =
+    "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_tyD4isWnZmog9Aj8zj4hm259lkRrTW3Ddw22GXOm";
 
   const [rate, setRate] = useState([]);
   const setCurrency = async () => {
@@ -16,8 +18,8 @@ const Converter = () => {
           "content-type": "application/json",
         },
       });
-      setRate(response);
-      console.log(response.data);
+      setRate(response.data);
+      console.log(rate);
     } catch (error) {
       console.log(error);
     }
@@ -41,9 +43,14 @@ const Converter = () => {
           <div className={classes.input}>
             <input type="text" />
             <select name="" id="">
-              <option value=""> GBP</option>
-              <option value=""> NGN</option>
-              <option value="">FRA</option>
+              {SetCountry.map((Currency, index) => {
+                return (
+                  <option value="">
+                    <span>{Currency.BaseCode}</span>
+                  </option>
+
+                );
+              })}
             </select>
           </div>
           <div className={classes.fee}>
@@ -72,7 +79,16 @@ const Converter = () => {
           <div className={classes.receive}>
             <p>You send exactly</p>
             <div className={classes.input}>
-              <input type="text" /> <span>NGN</span>
+              <input type="text" /> <span></span>
+              <select name="" id="">
+                {SetCountry.map((Currency, index) => {
+                  return (
+                    <option value="">
+                      <span>{Currency.BaseCode}</span>
+                    </option>
+                  );
+                })}
+              </select>
             </div>
           </div>
           <div className={classes.msg}>
@@ -86,7 +102,7 @@ const Converter = () => {
             <button>Get started</button>
           </div>
         </div>
-      </div>;
+      </div>
     </>
   );
 };

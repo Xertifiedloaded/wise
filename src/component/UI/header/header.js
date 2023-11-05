@@ -21,7 +21,7 @@ const Header = () => {
   });
   const setToggler = () => {
     setActive(!active);
-  };
+  }
   return (
     <>
       <header className={classes.header}>

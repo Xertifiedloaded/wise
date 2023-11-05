@@ -1,0 +1,165 @@
+.main {
+    background-color: #163300;
+    /* min-height: 100vh; */
+    color: white;
+    box-sizing: border-box;
+
+}
+
+.heading {
+    width: 90%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.main .heading>h1 {
+    font-size: 6rem;
+    color: #9fe870;
+    padding: 50px 0;
+    box-sizing: border-box;
+}
+
+.main .heading .para {
+    display: flex;
+    justify-content: end;
+    box-sizing: border-box;
+
+}
+
+.main .heading .para>p {
+    width: 50%;
+    font-size: 20px;
+    line-height: 1.8;
+    letter-spacing: 2px;
+    /* text-align: end; */
+    box-sizing: border-box;
+}
+
+.wisePhone {
+    padding: 50px 0;
+}
+
+.wisePhone>img {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+.learn {
+    display: flex;
+    align-items: center;
+    padding-bottom: 50px;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.learnContent {
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.learnContent>p {
+    font-size: 18px;
+    line-height: 1.5;
+    letter-spacing: 1.2px;
+    box-sizing: border-box;
+}
+
+.learn>button {
+    padding: 20px 30px;
+    border-radius: 5px;
+    border: none;
+    background: #9fe870;
+    color: black;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.ManWoman {
+    display: grid;
+    padding: 20px 0;
+    gap: 20px;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+}
+
+.ManWoman .container>img {
+    width: 100%;
+    height: auto;
+}
+
+.manContent>h2 {
+    padding: 20px 0;
+    font-size: 3rem;
+    color: #9fe870;
+}
+
+.manContent>p {
+    padding: 0 0 20px 0;
+    font-size: 17px;
+    letter-spacing: 1.3px;
+}
+
+.manContent>button {
+    padding: 15px 25px;
+    background: #9fe870;
+    border-radius: 10px;
+    border: none;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width:600px) {
+    .main .heading>h1 {
+        font-size: 20px;
+        padding: 5px 0 0 ;
+        text-align: center;
+    }
+    .wisePhone{
+        padding: 30px 0;
+    }
+    .main .heading .para {
+        display: block;
+        padding: 5px 0 0 ;
+    }
+
+    .main .heading .para>p {
+        width: 100%;
+        font-size: 10px;
+    }
+
+    .learn {
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        padding: 0;
+    }
+
+    .ManWoman {
+        display: block;
+    }
+
+    .learnContent {
+        width: 100%;
+
+    }
+
+    .manContent>h2 {
+        font-size: 20px;
+        padding: 2px 0 10px 0;
+        text-align: center;
+    }
+
+    .manContent>p {
+        font-size: 12px;
+        padding: 2px 0 10px 0;
+        letter-spacing: 1.5px;
+    }
+
+    .learnContent>p {
+        font-size: 10px;
+    }
+    .learnContent>p{
+        padding-bottom: 15px;
+    }
+   
+}
