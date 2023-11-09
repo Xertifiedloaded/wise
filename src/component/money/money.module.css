@@ -1,0 +1,102 @@
+.main {
+
+    height: 100%;
+}
+
+.main .flexItems {
+    display: grid;
+    justify-content: center;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 4fr));
+}
+
+.mainSection {
+    width: 90%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
+
+
+
+.main .flexItems .text>h2 {
+    font-size: 3.3rem;
+    text-transform: capitalize;
+    letter-spacing: 1.2px;
+}
+
+.main .flexItems .text>p {
+    margin: 10px 0;
+    font-size: 16px;
+    line-height: 2;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.main .flexItems .text>button {
+    padding: 15px 10px;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--limeColor);
+}
+
+.main .flexItems .key {
+    display: flex;
+    justify-content: end;
+}
+
+.mapSection {
+    margin-top: 50px;
+}
+
+.main .flexItems .key>img {
+    width: 40%;
+}
+
+.flexMap {
+    display: grid;
+    justify-content: space-between;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 4fr));
+}
+
+.flexMap .container1 .container1Img {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    background: rgb(229 229 229);
+}
+
+.flexMap .container1 .container1Img>img {
+    width: 50%;
+}
+
+.flexMap .container1>p {
+    padding: 10px 0;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 1.2px;
+}
+
+@media screen and (max-width:600px) {
+    .main .flexItems .key {
+        display: block;
+    }
+
+    .main .flexItems .key>img {
+        width: 100%;
+    }
+
+    .main .flexItems .text>h2 {
+        font-size: 2rem;
+        margin: 25px 0 10px 0;
+    }
+
+    .main .flexItems .text>p {
+        font-size: 15px;
+    }
+}

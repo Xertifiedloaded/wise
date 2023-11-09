@@ -8,26 +8,37 @@ import { NavMenu } from "../../../constant/navConstant";
 const Header = () => {
   const [active, setActive] = useState(false);
   const [MobileScreen, setMobileScreen] = useState(window.innerWidth);
+  const [dropDown, setDropDown] = useState(false);
+  const [open, setOpen] = useState(false);
   useEffect(() => {
     const SetMobileWidth = () => {
       setMobileScreen(window.innerWidth);
     };
     window.addEventListener("resize", SetMobileWidth);
-    if (active) {
+    if (active && MobileScreen < 600) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "scroll";
     }
   });
+  const setActiveOpen = () => {
+    setOpen(!open);
+  };
   const setToggler = () => {
     setActive(!active);
-  }
+  };
+  const setActiveDropDown = (nav) => {
+    setDropDown(nav.id === 3);
+  };
+
   return (
     <>
       <header className={classes.header}>
         <div className={classes.main}>
           <div className={classes.logo}>
-            <img src={Logo} alt="wise" />
+            <Link to={'/'}>
+              <img src={Logo} alt="wise" />
+            </Link>
           </div>
           <div className={classes.mobile} onClick={setToggler}>
             {active ? (
@@ -42,17 +53,49 @@ const Header = () => {
                 <button>personal</button>
               </div>
               <div className={classes.link}>
-                {NavMenu.map((nav, index) => {
+                {NavMenu.map((nav, idx) => {
                   return (
-                    <Link
-                      onClick={setToggler}
-                      key={index}
-                      className={classes.anchor}
-                    >
-                      <span> {nav.title}</span>
-                      <div className={classes.countryImg}>
-                        <img src={nav.Country} alt="" />
-                      </div>
+                    <Link to={nav.link} className={classes.anchor}>
+                      <ul>
+                        <li>
+                          <span
+                            className={`spanBox${classes.spann}`}
+                            onClick={() => {
+                              setToggler();
+                            }}
+                          >
+                            {nav.title}
+                            <img
+                              onClick={() => {
+                                setActiveDropDown(nav);
+                                setActiveOpen();
+                              }}
+                              src={nav.arrow}
+                              alt=""
+                            />
+                          </span>
+                        </li>
+                      </ul>
+                      {open && dropDown ? (
+                        <ul
+                          className={classes.dropDown}
+                          style={{
+                            border: nav.border,
+                            boxSizing: "content-box",
+                          }}
+                        >
+                          {nav.country?.map((items, id) => {
+                            return (
+                              <li className={classes.dropList} items={items}>
+                                <span>{items.local}</span>
+                                <div className={classes.countryImg2}>
+                                  <img src={items.countryIcon} alt="" />
+                                </div>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      ) : null}
                     </Link>
                   );
                 })}

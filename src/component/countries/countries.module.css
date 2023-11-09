@@ -1,0 +1,30 @@
+.main {
+    background: #ecefeb;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.main .mainText {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.mainText .country {
+    display: grid;
+    row-gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 4fr));
+}
+.mainText>h2{
+    padding: 10px 0;
+    font-size: 3rem;
+    font-weight: 700;
+}
+.mainText>button{
+    margin-bottom: 25px;
+    padding: 15px 35px;
+    border: none;
+    text-transform: capitalize;
+    background-color: var(--limeColor);
+    border-radius: 7px;
+}

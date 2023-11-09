@@ -1,0 +1,48 @@
+.main {
+
+    justify-content: center;
+    display: grid;
+    gap: 10px;
+    justify-content: space-between;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 4fr));
+    border-bottom: 1px solid rgb(212 212 212);
+}
+
+.footerLogo {
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    display: grid;
+    gap: 5x;
+    justify-content: space-between;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 4fr));
+}
+
+.mainContent {
+    width: 90%;
+    margin: 50px auto;
+}
+
+.footerList ul a,
+.legal ul a {
+    list-style: none;
+    font-weight: 400;
+    font-size: 13px;
+    text-decoration: underline;
+}
+
+.footerList ul a li,
+.legal ul a li {
+    margin: 10px 0;
+}
+
+.footerList>legend,
+.footerI {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.footerIcon {
+    display: flex;
+    gap: 20px;
+}
