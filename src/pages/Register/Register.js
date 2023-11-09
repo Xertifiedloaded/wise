@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import classes from './register.module.css'
 import Logo from '../../assets/images/logo.svg'
+import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { userContextApi } from '../../contextApi/context'
 const Register = () => {
+  const { payLoad, handleClick, handleSubmit } = useContext(userContextApi)
   return (
     <>
       <main className={classes.register}>
@@ -21,9 +25,9 @@ const Register = () => {
               Create an Account
             </h2>
             <p>Already have an account?
-              <span>
+              <Link to={'/login'} className={classes.spanColor}>
                 Sign in here
-              </span>
+              </Link>
             </p>
             <button>
               Sign in with Google
@@ -33,57 +37,57 @@ const Register = () => {
             <div className={classes.formInput}>
               <legend>email address</legend>
               <div className={classes.inputContainer}>
-                <input type="text" placeholder='Enter a valid Email Address here' />
+                <input value={payLoad.email} onChange={handleClick} name='email' type="email" placeholder='Enter a valid Email Address here' />
               </div>
             </div>
             <div className={classes.formInput}>
               <legend>Surname</legend>
               <div className={classes.inputContainer}>
-                <input type="text" placeholder='Provide your Surname' />
+                <input value={payLoad.surName} onChange={handleClick} name='surName' type="text" placeholder='Provide your Surname' />
               </div>
             </div>
             <div className={classes.formInput}>
               <legend>Lastname</legend>
               <div className={classes.inputContainer}>
-                <input type="text" placeholder='Provide your LastName' />
+                <input value={payLoad.lastName} onChange={handleClick} name='lastName' type="text" placeholder='Provide your LastName' />
               </div>
             </div>
             <div className={classes.formInput}>
               <legend>Phone Number</legend>
               <div className={classes.inputContainer}>
-                <input type="number" placeholder='Provide your Phone Number' />
+                <input value={payLoad.phone} onChange={handleClick} name='phone' type="number" placeholder='Provide your Phone Number' />
               </div>
               <div className={classes.formInput}>
                 <legend>Address</legend>
               </div>
               <div className={classes.inputContainer}>
-                <input type="text" placeholder='Provide a valid Address' />
+                <input value={payLoad.address} onChange={handleClick} name='address' type="text" placeholder='Provide a valid Address' />
               </div>
             </div>
             <div className={classes.formInput}>
-              <legend>Display Image (Optional)</legend>
+              <legend>Display Image <span className={classes.optional}>(Optional)</span></legend>
               <div className={classes.inputContainer}>
-                <input type="file" placeholder='Display Image' />
+                <input value={payLoad.image} onChange={handleClick} name='image' type="file" placeholder='Display Image' />
               </div>
             </div>
             <div className={classes.formInput}>
               <legend>Password</legend>
               <div className={classes.inputContainer}>
-                <input type="password" placeholder='Enter your password' />
+                <input value={payLoad.password} onChange={handleClick} name='password' type="password" placeholder='Enter your password' />
               </div>
             </div>
             <div className={classes.formInput}>
               <legend>Confirm your Password</legend>
               <div className={classes.inputContainer}>
-                <input type="password" placeholder='Enter your password' />
+                <input value={payLoad.verifyPassword} onChange={handleClick} name='verifyPassword' type="password" placeholder='Enter your password' />
               </div>
             </div>
             <div className={classes.checkBox}>
-              <input type="checkbox" style={{ color: "yellow" }} />
-              <span> Agree to the Terms and conditions.</span>
+              <input value={null} name='checkBox' type="checkBox" style={{ color: "yellow" }} />
+              <span> Agree to the <span className={classes.terms}>Terms and conditions.</span></span>
             </div>
-            <div className={classes.submitBtn}>
-              <button>
+            <div onChange={handleClick} className={classes.submitBtn}>
+              <button onClick={handleSubmit}>
                 Submit
               </button>
             </div>
