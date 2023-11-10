@@ -1,7 +1,7 @@
 .converterMenu {
     background-color: var(--limeColor);
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: space-between;
     align-items: center ;
@@ -18,7 +18,6 @@
     padding: 40px;
     border-radius: 10px;
     background-color: rgb(255 255 255);
-    ;
 }
 
 .converter .input {
@@ -66,11 +65,12 @@
     text-align: center;
 }
 @media screen and (max-width:600px) {
+    
     .converterMenu {
         display: block;
         padding: 0;
         padding: 40px 0;
-    
+
     }
 
     .converterMenu .content,
@@ -98,5 +98,8 @@
     .converterMenu .converter {
         padding: 10px;
         border-radius: 0;
+    }
+    .converter .input input {
+        font-size: 16px;
     }
 }

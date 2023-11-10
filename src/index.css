@@ -34,3 +34,6 @@ code {
   --bg-testimonial-1: #a0e1e1;
   --bg-testimonial-2: #ffc091;
 }
+input{
+  font-size: 16px;
+}
