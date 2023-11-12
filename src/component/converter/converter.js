@@ -4,29 +4,45 @@ import error from "../../assets/images/error.svg";
 import { useState } from "react";
 import axios from "axios";
 import { SetCountry } from "../../constant/country";
+import CurrencyRow from "../CurrencyRow/currencyRow";
 const Converter = () => {
+  const API_KEY = "63a292467dmshea0e6ca9920df20p145d1cjsnf28f9695f474";
   const BASE_URL =
-    "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_tyD4isWnZmog9Aj8zj4hm259lkRrTW3Ddw22GXOm";
-
+    "https://currency-converter5.p.rapidapi.com/currency/convert";
   const [rate, setRate] = useState([]);
-  const setCurrency = async () => {
-    try {
-      const response = await axios({
-        method: "GET",
-        url: BASE_URL,
-        headers: {
-          "content-type": "application/json",
-        },
-      });
-      setRate(response.data);
-      console.log(rate);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const [currencyOption, setCurrencyOption] = useState([]);
+  const [fromCurrency, setFromCurrency] = useState();
+  const [toCurrency, setToCurrency] = useState();
+  const [amount,setAmount]=useState(1)
+  const [exchangeRate,setExchangeRate]=useState()
+  const [amountFromCurrency,setAmountInFromCurrency]=useState(true)
+
+
+
   useEffect(() => {
-    setCurrency();
+    const options = {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Key": "63a292467dmshea0e6ca9920df20p145d1cjsnf28f9695f474",
+        "X-RapidAPI-Host": "currency-converter5.p.rapidapi.com",
+      },
+    };
+    fetch(BASE_URL, options)
+      .then((res) => res.json())
+      .then((data) => {
+        const firstCurrency = Object.keys(data.rates)[0];
+        setCurrencyOption([
+          data.base_currency_code,
+          ...Object.keys(data.rates),
+        ]);
+        setFromCurrency(data.base_currency_code);
+        setToCurrency(firstCurrency);
+        setExchangeRate(data.rates[firstCurrency])
+      });
   }, []);
+  // const onChangeCurrency = (e) => {
+  //   setToCurrency(e.target.value);
+  // };
   return (
     <>
       <div className={classes.converterMenu}>
@@ -40,56 +56,19 @@ const Converter = () => {
         </div>
         <div className={classes.converter}>
           <p>You send exactly</p>
-          <div className={classes.input}>
-            <input type="text" />
-            <select name="" id="">
-              {SetCountry.map((Currency, index) => {
-                return (
-                  <option value="">
-                    <span>{Currency.BaseCode}</span>
-                  </option>
+          <CurrencyRow
+            currencyOption={currencyOption}
+            selectedCurrency={fromCurrency}
+            onChangeCurrency={e=>setFromCurrency(e.target.value)}
+          />
 
-                );
-              })}
-            </select>
-          </div>
-          <div className={classes.fee}>
-            <div className={classes.rate}>
-              <div className={classes.flex}>
-                <span>-</span>
-                <span>6.38GBP</span>
-              </div>
-              <p>Low cost transfer fee</p>
-            </div>
-          </div>
-          <div className={classes.rate}>
-            <div className={classes.flex}>
-              <span>=</span>
-              <span>993.87 GBP</span>
-            </div>
-            <p>Total amount we’ll convert</p>
-          </div>
-          <div className={classes.rate}>
-            <div className={classes.flex}>
-              <span>-</span>
-              <span>980.661 GBP</span>
-            </div>
-            <p>Guaranteed rate (41h)</p>
-          </div>
           <div className={classes.receive}>
             <p>You send exactly</p>
-            <div className={classes.input}>
-              <input type="text" /> <span></span>
-              <select name="" id="">
-                {SetCountry.map((Currency, index) => {
-                  return (
-                    <option value="">
-                      <span>{Currency.BaseCode}</span>
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
+            <CurrencyRow
+            onChangeCurrency={e=>setToCurrency(e.target.value)}
+              currencyOption={currencyOption}
+              selectedCurrency={toCurrency}
+            />
           </div>
           <div className={classes.msg}>
             <img src={error} alt="" />
@@ -108,3 +87,6 @@ const Converter = () => {
 };
 
 export default Converter;
+
+// fca_live_OR4mCIaoIQ5F1SOZxALtLCfqdpUNMFGdVlxCFRLu
+// "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_OR4mCIaoIQ5F1SOZxALtLCfqdpUNMFGdVlxCFRLu"
